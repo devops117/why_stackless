@@ -149,6 +149,8 @@ Also note that a send will block if there is nothing to immediately receive the
 message::
 
     >>>
+    >>> #Sends information sent to the channel
+    ...
     >>> stackless.tasklet(sending_tasklet)()
     <stackless.tasklet object at 0x00A45B70>
     >>> stackless.tasklet(another_tasklet)()
@@ -163,7 +165,7 @@ message::
     >>> stackless.run()
     Just another tasklet in the scheduler
     >>>
-    >>> #Finally adding the receiving tasklet
+    >>> #Recieves the information sent to the channel
     ...
     >>> stackless.tasklet(receiving_tasklet)()
     <stackless.tasklet object at 0x00A45BF0>
