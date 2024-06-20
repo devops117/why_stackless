@@ -33,26 +33,27 @@ Every time you call a subroutine, it creates a **stack frame**.  This is the
 holding area for variables and other information local to the subroutine.  In
 this case, when you call *ping()* it creates a stack frame that holds
 information for the subroutine call.  Simplistically, the frame says that says
-*ping pinged*.  When it calls *pong()*, this creates another stack frame that
-says *pong ponged*.  The stack frames are chained together, with each
-subroutine call acting as a link in the chain.  In this case, the stack
-basically says *ping pinged so pong ponged*.  Of course when *pong()* calls
-*ping()* this extends the stack.  Here is a visual representation:
+*ping called*.  When *ping subroutine* calls *pong()*, this creates another stack frame
+that says *pong called*.  The stack frames are chained together,
+with each subroutine call acting as a link in the chain.  In this case,
+the stack basically says *ping called so pong called*.  Of course when
+*pong()* and *ping()* call each other, this extends the stack.  Here is a
+visual representation:
 
 ===== ===========================================================================
 Frame Stack
 ===== ===========================================================================
- 1    ping pinged
- 2    ping pinged so pong ponged
- 3    ping pinged so pong ponged so ping pinged
- 4    ping pinged so pong ponged so ping pinged so pong ponged
- 5    ping pinged so pong ponged so ping pinged so pong ponged so ping pinged
- 6    ping pinged so pong ponged so ping pinged so pong ponged so ping pinged ...
+ 1    ping called
+ 2    ping called so pong called
+ 3    ping called so pong called so ping called
+ 4    ping called so pong called so ping called so pong called
+ 5    ping called so pong called so ping called so pong called so ping called
+ 6    ping called so pong called so ping called so pong called so ping called ...
 ===== ===========================================================================
 
-Now imagine that the page width represents the memory that your system has
-allocated to the stack.  When you hit the edge of the page, you *overflow* and
-the system runs out of memory.  Hence the term *stack overflow*.
+Now imagine that the width the table takes on your screen represents the
+memory that your system has allocated to the stack.  When you hit the edge of screen,
+you *overflow* and the system runs out of memory.  Hence the term *stack overflow*.
 
 So why do we use stacks?
 ========================
@@ -109,7 +110,7 @@ Summary
 
 If you recall, earlier I mentioned that experience programmers would
 immediately see a problem with the recursive version of the code.  But
-honestly, there's not 'computer science' issue that would prevent this code
+honestly, there's not a 'computer science' issue that would prevent this code
 from working.  It is simply a minor implementation detail that you're stuck with
 in most conventional languages, because most conventional languages use a
 stack.  In some sense, experienced programmers have simply been brainwashed to
