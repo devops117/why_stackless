@@ -11,6 +11,7 @@ class hackysacker:
         circle.append(self)
         self.messageQueue = Queue.Queue()
 
+        # pass messageLoop method
         thread.start_new_thread(self.messageLoop,())
 
     def incrementCounter(self):
